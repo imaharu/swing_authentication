@@ -12,6 +12,7 @@ gem 'devise'
 
 group :development, :test do
   gem 'byebug'
+  gem 'letter_opener_web'
 end
 
 group :development do
