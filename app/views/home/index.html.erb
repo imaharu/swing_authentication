@@ -6,3 +6,9 @@
   <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   <%= f.submit "パスワードリセット" %>
 <% end %>
+
+<% @users.each do |user| %>
+  <p>
+    <%= user.email %>
+  </p>
+<% end %>
