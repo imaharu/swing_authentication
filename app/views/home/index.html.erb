@@ -1,5 +1,5 @@
 Home
 <%= form_with url: "/users/confirmation" do |form| %>
-  <%= form.email_field :email %>
+  <%= form.email_field :unconfirmed_email %>
   <%= form.submit "仮登録" %>
 <% end %>
