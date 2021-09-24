@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2021_09_24_113443) do
 
   create_table "unconfirmed_users", force: :cascade do |t|
     t.string "unconfirmed_email", null: false
+    t.string "email"
     t.string "confirmation_token", null: false
     t.datetime "confirmation_sent_at", null: false
     t.datetime "created_at", precision: 6, null: false

@@ -7,9 +7,11 @@ class User::ConfirmationsController < Devise::ConfirmationsController
   # end
 
   # POST /resource/confirmation
-  # def create
-  #   super
-  # end
+  def create
+    super do
+      redirect_to root_path and return
+    end
+  end
 
   # GET /resource/confirmation?confirmation_token=abcdef
   # def show
