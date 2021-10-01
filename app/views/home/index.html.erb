@@ -1,0 +1,5 @@
+Home
+<%= form_with model: UnconfirmedUser.new, url: "/unconfirmed_users/confirmation" do |form| %>
+  <%= form.email_field :email %>
+  <%= form.submit "仮登録" %>
+<% end %>
