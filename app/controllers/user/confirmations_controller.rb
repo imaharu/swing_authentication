@@ -8,16 +8,19 @@ class User::ConfirmationsController < Devise::ConfirmationsController
 
   # POST /resource/confirmation
   def create
-    UnconfirmedUser.find_or_initialize_by(email: params[:unconfirmed_user][:email]).save
+    unconfirmed_user = UnconfirmedUser.find_or_initialize_by(unconfirmed_email: params[:unconfirmed_user][:email])
+    unconfirmed_user.save
     super do
       redirect_to root_path and return
     end
   end
 
   # GET /resource/confirmation?confirmation_token=abcdef
-  # def show
-  #   super
-  # end
+  def show
+    super do
+      return render "users/confirmations/show"
+    end
+  end
 
   # protected
 

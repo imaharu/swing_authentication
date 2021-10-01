@@ -10,17 +10,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_24_113443) do
+ActiveRecord::Schema.define(version: 2021_10_01_095140) do
+
+  create_table "password_authentications", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "email", null: false
+    t.string "encrypted_password", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["email"], name: "index_password_authentications_on_email", unique: true
+    t.index ["user_id"], name: "index_password_authentications_on_user_id", unique: true
+  end
 
   create_table "unconfirmed_users", force: :cascade do |t|
-    t.string "unconfirmed_email", null: false
+    t.string "unconfirmed_email"
     t.string "email"
     t.string "confirmation_token", null: false
-    t.datetime "confirmation_sent_at", null: false
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["confirmation_token"], name: "index_unconfirmed_users_on_confirmation_token", unique: true
     t.index ["unconfirmed_email"], name: "index_unconfirmed_users_on_unconfirmed_email", unique: true
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "nickname", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "password_authentications", "users"
 end
